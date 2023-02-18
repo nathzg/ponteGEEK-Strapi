@@ -1,63 +1,100 @@
 {
-	"kind": "collectionType",
-	"collectionName": "authors",
-	"info": {
-		"singularName": "author",
-		"pluralName": "authors",
-		"displayName": "Author",
-		"description": "Create authors for your content"
-	},
-	"options": {
-		"increments": true,
-		"timestamps": true,
-		"draftAndPublish": false
-	},
-	"attributes": {
-		"name": {
-			"type": "string",
-			"required": true
-		},
-		"slug": {
-			"type": "uid",
-			"targetField": "name"
-		},
-		"thumbnail": {
-			"type": "media",
-			"multiple": false,
-			"required": false,
-			"allowedTypes": ["images"]
-		},
-		"description": {
-			"type": "string"
-		},
-		"title": {
-			"type": "string"
-		},
-		"social": {
-			"type": "component",
-			"repeatable": true,
-			"component": "shared.array"
-		},
-		"social_array": {
-			"type": "array",
-			"configurable": false,
-			"visible": false
-		},
-		"skills": {
-			"type": "component",
-			"repeatable": true,
-			"component": "shared.array"
-		},
-		"skills_array": {
-			"type": "array",
-			"configurable": false,
-			"visible": false
-		},
-		"articles": {
-			"type": "relation",
-			"relation": "oneToMany",
-			"target": "api::article.article",
-			"mappedBy": "author"
-		}
-	}
+  "kind": "collectionType",
+  "collectionName": "authors",
+  "info": {
+    "singularName": "author",
+    "pluralName": "authors",
+    "displayName": "Author",
+    "description": "Create authors for your content"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "social_array": {
+      "type": "array",
+      "configurable": false,
+      "visible": false
+    },
+    "skills_array": {
+      "type": "array",
+      "configurable": false,
+      "visible": false
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.array",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.array",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "author"
+    }
+  }
 }
