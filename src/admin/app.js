@@ -15,7 +15,7 @@ export default {
       favicon: favicon,
     },
     // Add a new locale, other than 'en'
-    locales: ['fr', 'en', 'es'],
+    locales: ['en', 'es'],
     // Replace the Strapi logo in the main navigation
     menu: {
       logo: MenuLogo,
