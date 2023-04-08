@@ -4,6 +4,8 @@ import AuthLogo from './extensions/logo.png';
 import MenuLogo from './extensions/logo.png';
 import favicon from './extensions/favicon.ico';
 
+
+
 export default {
   config: {
     // Replace the Strapi logo in auth (login) views
@@ -15,7 +17,7 @@ export default {
       favicon: favicon,
     },
     // Add a new locale, other than 'en'
-    locales: ['en', 'es'],
+    locales: ['es'],
     // Replace the Strapi logo in the main navigation
     menu: {
       logo: MenuLogo,
@@ -41,12 +43,15 @@ export default {
     },
     // Extend the translations
     translations: {
-      fr: {
-        'Auth.form.email.label': 'test',
-        Users: 'Utilisateurs',
-        City: 'CITY (FRENCH)',
-        // Customize the label of the Content Manager table.
-        Id: 'ID french',
+      es: {
+        'app.components.LeftMenu.navbrand.title': 'ponteGEEK',
+        'app.components.LeftMenu.navbrand.workplace': 'Creador de contenido',
+        'app.components.HomePage.welcome': 'Bienvenidos GEEK`s',
+        'app.components.HomePage.welcome.again': 'Bienvenidos GEEK`s',
+        "app.components.HomePage.welcomeBlock.content.again": "Estamos encantados de estés aquí, acompañándonos. Aquí, encontrarás un espacio para compartir tus ideas, explorar tu creatividad a través de la producción de contenido cautivador e innovador. ¡Manos a la obra y que comience la magia!",
+        'Auth.form.welcome.subtitle': 'Este es el creador de contenido de ponteGEEK, inicia sesión',
+        "Auth.form.email.placeholder": "darthvader@pontegeek.com",
+        
       },
     },
    // Disable video tutorials
