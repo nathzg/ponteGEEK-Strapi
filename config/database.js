@@ -10,7 +10,7 @@ const path = require('path');
           database: env('DATABASE_NAME', 'postgres'),
           user: env('DATABASE_USERNAME', 'pontedba'),
           password: env('DATABASE_PASSWORD', 'ponteGeekDBA01.'),
-          schema: env('DATABASE_SCHEMA', 'public'), // Not required
+          schema: env('DATABASE_SCHEMA', 'public'),
           ssl: {
             rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false),
           },

@@ -1,15 +1,23 @@
 {
   "dependencies": {
-    "@strapi/plugin-i18n": "4.11.2",
-    "@strapi/plugin-users-permissions": "4.11.2",
+    "@strapi/plugin-content-manager": "^4.15.0",
+    "@strapi/plugin-content-type-builder": "^4.15.0",
+    "@strapi/plugin-email": "^4.15.0",
+    "@strapi/plugin-i18n": "^4.15.0",
+    "@strapi/plugin-upload": "^4.15.0",
+    "@strapi/plugin-users-permissions": "^4.15.0",
     "@strapi/provider-upload-aws-s3": "^4.8.2",
-    "@strapi/strapi": "4.11.2",
+    "@strapi/strapi": "^4.15.0",
     "better-sqlite3": "8.0.1",
     "fs-extra": "^10.0.0",
     "knex": "^2.4.2",
     "mime-types": "^2.1.27",
-    "pg": "^8.9.0",
-    "sharp": "^0.34.2"
+    "pg": "^8.11.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^5.3.4",
+    "sharp": "^0.34.2",
+    "styled-components": "^5.3.11"
   },
   "name": "strapi-backend",
   "private": true,
