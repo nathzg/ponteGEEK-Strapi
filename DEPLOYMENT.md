@@ -1,30 +1,27 @@
 # Guía de deployment - ponteGEEK Strapi
 
-## Plataformas recomendadas
-
-El proyecto está preparado para **Railway** o **Render** (usan Nixpacks).
+Este proyecto usa **better-sqlite3** (SQLite) como base de datos. Sin necesidad de PostgreSQL.
 
 ---
 
-## Opción 1: Railway
+## Railway (recomendado)
 
 ### Pasos
 
-1. **Sube el código a GitHub** (si no está ya):
+1. **Sube el código a GitHub**:
    ```bash
-   git add .
-   git commit -m "Preparar deployment"
    git push origin main
    ```
 
 2. **Conecta con Railway**:
    - Entra a [railway.app](https://railway.app)
    - "New Project" → "Deploy from GitHub repo"
-   - Selecciona este repositorio
+   - Selecciona `ponteGEEK-Strapi`
 
-3. **Base de datos** (elige una):
-   - **PostgreSQL de Railway**: "New" → "Database" → "PostgreSQL" (te dará las variables automáticamente)
-   - **Tu AWS RDS existente**: Configura las variables manualmente (ver abajo)
+3. **Añade un Volume** (obligatorio para persistir SQLite):
+   - En tu servicio → **Settings** → **Volumes** → **Add Volume**
+   - **Mount Path**: `/data`
+   - Esto persiste la base de datos entre redeploys
 
 4. **Variables de entorno** en Railway → Variables:
    ```
@@ -38,11 +35,7 @@ El proyecto está preparado para **Railway** o **Render** (usan Nixpacks).
    ADMIN_JWT_SECRET=tu-admin-secret
    JWT_SECRET=tu-jwt-secret
 
-   DATABASE_HOST=...
-   DATABASE_PORT=5432
-   DATABASE_NAME=...
-   DATABASE_USERNAME=...
-   DATABASE_PASSWORD=...
+   DATABASE_FILENAME=/data/data.db
 
    AWS_ACCESS_KEY_ID=...
    AWS_ACCESS_SECRET=...
@@ -50,67 +43,51 @@ El proyecto está preparado para **Railway** o **Render** (usan Nixpacks).
    AWS_BUCKET=...
    ```
 
-5. **Generar secretos** (ejecuta en tu terminal):
+5. **Generar secretos** (en tu terminal):
    ```bash
-   # APP_KEYS (4 valores separados por coma)
-   openssl rand -base64 32
-   openssl rand -base64 32
-   openssl rand -base64 32
-   openssl rand -base64 32
-
-   # API_TOKEN_SALT, ADMIN_JWT_SECRET, JWT_SECRET
-   openssl rand -base64 32
+   openssl rand -base64 32  # para cada APP_KEY, API_TOKEN_SALT, etc.
    ```
 
 6. **Deploy**: Railway hará build y deploy automáticamente.
 
 ---
 
-## Opción 2: Render
+## Render
 
-1. **Push a GitHub** (igual que arriba)
+1. **Push a GitHub** y crea un Web Service en [render.com](https://render.com)
 
-2. **Nuevo Web Service** en [render.com](https://render.com)
+2. **Persistent Disk** (obligatorio para SQLite):
+   - Settings → **Add Persistent Disk**
+   - Mount Path: `/data`
 
-3. Conecta el repositorio
+3. **Variables de entorno**: igual que Railway, con `DATABASE_FILENAME=/data/data.db`
 
-4. Configuración:
-   - **Build Command**: `npm install --omit=dev && npm run build`
-   - **Start Command**: `npm run start`
-   - **Node Version**: 18
-
-5. Añade las mismas variables de entorno que en Railway
-
-6. Si usas PostgreSQL de Render: añade un "PostgreSQL" database y conecta las variables `DATABASE_*` que te proporcione
+4. Build: `npm install --omit=dev && npm run build`  
+   Start: `npm run start`
 
 ---
 
-## Variables obligatorias
+## Variables obligatorias (SQLite)
 
 | Variable | Descripción |
 |----------|-------------|
-| `APP_KEYS` | 4 claves separadas por coma (generar con openssl) |
+| `APP_KEYS` | 4 claves separadas por coma |
 | `API_TOKEN_SALT` | Sal para tokens API |
 | `ADMIN_JWT_SECRET` | Secret para JWT del admin |
 | `JWT_SECRET` | Secret para JWT de usuarios |
-| `DATABASE_HOST` | Host de PostgreSQL |
-| `DATABASE_NAME` | Nombre de la base de datos |
-| `DATABASE_USERNAME` | Usuario de PostgreSQL |
-| `DATABASE_PASSWORD` | Contraseña de PostgreSQL |
+| `DATABASE_FILENAME` | Local: `.tmp/data.db` — Producción: `/data/data.db` |
 | `AWS_ACCESS_KEY_ID` | Para uploads S3 |
 | `AWS_ACCESS_SECRET` | Para uploads S3 |
-| `AWS_REGION` | Región AWS (ej: us-east-2) |
+| `AWS_REGION` | Región AWS |
 | `AWS_BUCKET` | Nombre del bucket S3 |
-| `PUBLIC_URL` | URL pública del CMS (ej: https://cms.pontegeek.com) |
+| `PUBLIC_URL` | URL pública del CMS |
 
 ---
 
 ## Desarrollo local
 
-Crea un archivo `.env` basado en `.env.example` con tus valores locales.
-
 ```bash
 cp .env.example .env
-# Edita .env con tus credenciales
+# Edita .env con APP_KEYS, secretos, etc.
 npm run develop
 ```
