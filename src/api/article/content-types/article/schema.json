@@ -14,12 +14,12 @@
   },
   "attributes": {
     "tags_array": {
-      "type": "array",
+      "type": "json",
       "configurable": false,
       "visible": false
     },
     "keywords_array": {
-      "type": "array",
+      "type": "json",
       "configurable": false,
       "visible": false
     },

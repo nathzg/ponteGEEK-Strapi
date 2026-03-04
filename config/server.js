@@ -10,6 +10,6 @@ module.exports = ({ env }) => ({
   },
   autoReload: {
     enable: env.bool('AUTO_RELOAD', env('NODE_ENV') !== 'production'),
-  },,
+  },
 });
 

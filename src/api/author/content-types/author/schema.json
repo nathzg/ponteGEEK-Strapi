@@ -14,12 +14,12 @@
   },
   "attributes": {
     "social_array": {
-      "type": "array",
+      "type": "json",
       "configurable": false,
       "visible": false
     },
     "skills_array": {
-      "type": "array",
+      "type": "json",
       "configurable": false,
       "visible": false
     },

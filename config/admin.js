@@ -10,6 +10,9 @@ module.exports = ({ env }) => ({
   transfer: {
     token: {
       salt: env('TRANSFER_TOKEN_SALT', crypto.randomBytes(16).toString('base64')),
-    }
+    },
+  },
+  secrets: {
+    encryptionKey: env('ADMIN_ENCRYPTION_KEY', crypto.randomBytes(16).toString('base64')),
   },
 });

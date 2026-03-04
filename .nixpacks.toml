@@ -1,9 +1,9 @@
 [phases.setup]
-nixPkgs = ["nodejs-18_x", "npm", "python3", "gcc"]
+nixPkgs = ["nodejs-20_x", "npm", "python3", "gcc"]
 aptPkgs = ["build-essential"]
 
 [phases.install]
-cmds = ["npm install --omit=dev"]
+cmds = ["npm install --omit=dev --legacy-peer-deps"]
 
 [phases.build]
 cmds = ["npm run build"]

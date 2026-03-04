@@ -17,7 +17,7 @@ export default {
       favicon: favicon,
     },
     // Add a new locale, other than 'en'
-    locales: ['es'],
+    locales: ['en', 'es'],
     // Replace the Strapi logo in the main navigation
     menu: {
       logo: MenuLogo,
@@ -35,11 +35,22 @@ export default {
           danger700: '#b72b1a'
         },
       },
-      
-      // overwrite dark theme properties
+      // Tema oscuro - sin esto la pantalla se ve negra
       dark: {
-         // ...
-      }
+        colors: {
+          primary100: '#1a1f36',
+          primary200: '#2a3154',
+          primary500: '#6b7fff',
+          primary600: '#8b9aff',
+          primary700: '#a8b5ff',
+          neutral0: '#212134',
+          neutral100: '#181826',
+          neutral150: '#32324d',
+          neutral200: '#4a4a6a',
+          neutral800: '#eaeaef',
+          neutral900: '#ffffff',
+        },
+      },
     },
     // Extend the translations
     translations: {
