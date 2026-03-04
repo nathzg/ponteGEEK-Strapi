@@ -8,10 +8,9 @@
     "description": "Create your blog content"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "tags_array": {
       "type": "json",
@@ -70,13 +69,13 @@
     },
     "tags": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.array"
+      "component": "shared.array",
+      "repeatable": true
     },
     "keywords": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.array"
+      "component": "shared.array",
+      "repeatable": true
     },
     "thumbnailText": {
       "type": "string"

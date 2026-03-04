@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comments"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contentid": {
+      "type": "string"
+    },
+    "contenttype": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "createat": {
+      "type": "datetime"
+    }
+  }
+}
